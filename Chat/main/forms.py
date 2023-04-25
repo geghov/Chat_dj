@@ -20,4 +20,4 @@ class NewUserForm(UserCreationForm):
 class MessageForm(forms.ModelForm):
 	class Meta:
 		model = Message
-		fields = '__all__'
+		fields = ['user', 'text']
