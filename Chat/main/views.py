@@ -8,14 +8,15 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
+	# user_id = 0
 	if request.method == 'POST':
 		form = MessageForm(request.POST)
 		if form.is_valid():
-			# form = MessageForm(user=request.user,text=request.POST('text'))
 			Message.objects.create(**form.cleaned_data)
-			# ???????????????????????????????????????????????????????/
-	texts = Message.objects.all()
 	form = MessageForm()
+	texts = Message.objects.all()
+	# users = User.objects.all()
+	
 	return render(request, 'main/home.html', context={
 		'form': form,
 		'texts': texts

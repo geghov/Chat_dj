@@ -6,8 +6,8 @@
         <div class="chatbox">
             {% for i in texts %}
             <div class="message">
-                <p>{{ i.user.username }} - {{ i.text }}</p>
-                <p>{{ i.created }}</p>
+                <p><strong>{{ i.user }}:</strong> {{ i.text }}</p>
+                <p class="timestamp">{{ i.created|date:"F j, Y H:i" }}</p>
             </div>
             {% endfor %}
             <div class="message"> 
@@ -18,7 +18,7 @@
         <form method="post">
             {% csrf_token %}
             <input type="text" name="text" placeholder="Type your message here">
-            <input type="submit" value="Send">
+            <button type="submit" name="user" value="{{ request.user.id }}">Send</button>
         </form>
     </div>
 {% endblock %}
